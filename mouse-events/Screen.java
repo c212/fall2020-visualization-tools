@@ -2,10 +2,17 @@ import javax.swing.JComponent;
 import java.awt.Graphics;
 import java.awt.Color; 
 import java.util.ArrayList;
+import java.awt.event.MouseMotionListener; 
+import java.awt.event.MouseEvent; 
 
-public class Screen extends JComponent {
+public class Screen extends JComponent implements MouseMotionListener {
+  public void mouseMoved(MouseEvent e) { } 
+  public void mouseDragged(MouseEvent e) { 
+    System.out.println( "(" + e.getX() + ", " + e.getY() + ")" );
+  } 
   ArrayList<Circle> circles; // declaration  
   public Screen(int number) {
+    this.addMouseMotionListener( this ); 
     this.circles = new ArrayList<Circle>(); // allocation 
     for (int i = 0; i < number; i++) {
       Circle c = new Circle((int)(Math.random() * 500) + 50,
