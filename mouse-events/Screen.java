@@ -3,16 +3,27 @@ import java.awt.Graphics;
 import java.awt.Color; 
 import java.util.ArrayList;
 import java.awt.event.MouseMotionListener; 
+import java.awt.event.MouseListener; 
 import java.awt.event.MouseEvent; 
 
-public class Screen extends JComponent implements MouseMotionListener {
-  public void mouseMoved(MouseEvent e) { } 
+public class Screen extends JComponent implements MouseMotionListener,
+                                                  MouseListener {
+  public void mouseReleased(MouseEvent e) { } 
+  public void mousePressed(MouseEvent e) { 
+    System.out.println( "Ouch: (" + e.getX() + ", " + e.getY() + ")"); 
+  } 
+  public void mouseClicked(MouseEvent e) { } 
+  public void mouseExited(MouseEvent e) { } 
+  public void mouseEntered(MouseEvent e) { } 
+  public void mouseMoved(MouseEvent e) { }
+  
   public void mouseDragged(MouseEvent e) { 
     System.out.println( "(" + e.getX() + ", " + e.getY() + ")" );
   } 
   ArrayList<Circle> circles; // declaration  
   public Screen(int number) {
     this.addMouseMotionListener( this ); 
+    this.addMouseListener( this );     
     this.circles = new ArrayList<Circle>(); // allocation 
     for (int i = 0; i < number; i++) {
       Circle c = new Circle((int)(Math.random() * 500) + 50,
