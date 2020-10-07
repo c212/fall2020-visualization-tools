@@ -22,4 +22,8 @@ public class Circle {
     g2.setColor(Color.BLACK);
     g2.drawOval(this.x, this.y, this.radius, this.radius); 
   }
+  public boolean contains(int x, int y) {
+    return this.radius >= Math.sqrt( Math.pow(x - this.x, 2) + 
+                                     Math.pow(y - this.y, 2) );  
+  }
 }

@@ -8,9 +8,19 @@ import java.awt.event.MouseEvent;
 
 public class Screen extends JComponent implements MouseMotionListener,
                                                   MouseListener {
-  public void mouseReleased(MouseEvent e) { } 
+  Circle current; // null to start with 
+  public void mouseReleased(MouseEvent e) { 
+    this.current = null; 
+  } 
   public void mousePressed(MouseEvent e) { 
-    System.out.println( "Ouch: (" + e.getX() + ", " + e.getY() + ")"); 
+    // System.out.println( "Ouch: (" + e.getX() + ", " + e.getY() + ")");
+    int x = e.getX(), y = e.getY(); 
+    for (Circle c : this.circles) {
+      if (c.contains(x, y)) {
+        this.current = c; 
+        break; 
+      }
+    }
   } 
   public void mouseClicked(MouseEvent e) { } 
   public void mouseExited(MouseEvent e) { } 
@@ -18,7 +28,8 @@ public class Screen extends JComponent implements MouseMotionListener,
   public void mouseMoved(MouseEvent e) { }
   
   public void mouseDragged(MouseEvent e) { 
-    System.out.println( "(" + e.getX() + ", " + e.getY() + ")" );
+    // System.out.println( "(" + e.getX() + ", " + e.getY() + ")" );
+    System.out.println( this.current ); 
   } 
   ArrayList<Circle> circles; // declaration  
   public Screen(int number) {
