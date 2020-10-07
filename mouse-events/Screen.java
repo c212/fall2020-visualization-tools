@@ -18,7 +18,8 @@ public class Screen extends JComponent implements MouseMotionListener,
     for (Circle c : this.circles) {
       if (c.contains(x, y)) {
         this.current = c; 
-        break; 
+        // break; 
+        // without the break it will pick up the topmost circle 
       }
     }
   } 
@@ -29,7 +30,11 @@ public class Screen extends JComponent implements MouseMotionListener,
   
   public void mouseDragged(MouseEvent e) { 
     // System.out.println( "(" + e.getX() + ", " + e.getY() + ")" );
-    System.out.println( this.current ); 
+    // System.out.println( this.current ); 
+    int x = e.getX(), y = e.getY(); 
+    if (this.current != null) 
+      this.current.moveTo(x, y); 
+    this.repaint(); // we inherit this and it calls our paintComponent properly 
   } 
   ArrayList<Circle> circles; // declaration  
   public Screen(int number) {

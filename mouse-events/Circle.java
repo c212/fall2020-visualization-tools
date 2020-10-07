@@ -18,12 +18,16 @@ public class Circle {
     float thickness = 10;
     g2.setStroke(new BasicStroke(thickness));
     g2.setColor(c);
-    g2.fillOval(this.x, this.y, this.radius, this.radius); 
+    g2.fillOval(this.x, this.y, 2 * this.radius, 2 * this.radius); 
     g2.setColor(Color.BLACK);
-    g2.drawOval(this.x, this.y, this.radius, this.radius); 
+    g2.drawOval(this.x, this.y, 2 * this.radius, 2 * this.radius); 
   }
   public boolean contains(int x, int y) {
     return this.radius >= Math.sqrt( Math.pow(x - this.x, 2) + 
                                      Math.pow(y - this.y, 2) );  
+  }
+  public void moveTo(int x, int y) {
+    this.x = x - this.radius; 
+    this.y = y - this.radius; 
   }
 }
