@@ -10,10 +10,10 @@ public class Screen extends JComponent {
     for (int i = 0; i < number; i++) {
       Circle c = new Circle((int)(Math.random() * 500) + 50,
                             (int)(Math.random() * 500) + 50, 
-                            (int)(Math.random() * 100) + 20, 
-                             new Color((int)(Math.random()*256), 
-                                       (int)(Math.random()*256),
-                                       (int)(Math.random()*256))); 
+                            (int)(Math.random() *  80) + 40, 
+                             new Color((int)(Math.random()*128 + 128), 
+                                       (int)(Math.random()*128 + 128),
+                                       (int)(Math.random()*128 + 128))); 
       this.circles.add( c ); // initialization of the array list one by one 
         
     }

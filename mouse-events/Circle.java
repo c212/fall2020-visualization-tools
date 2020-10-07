@@ -18,6 +18,8 @@ public class Circle {
     float thickness = 10;
     g2.setStroke(new BasicStroke(thickness));
     g2.setColor(c);
+    g2.fillOval(this.x, this.y, this.radius, this.radius); 
+    g2.setColor(Color.BLACK);
     g2.drawOval(this.x, this.y, this.radius, this.radius); 
   }
 }
